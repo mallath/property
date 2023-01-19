@@ -1,0 +1,81 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h2>TC Properties</h2>
+    
+    <div class="d-flex">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="ClickAddProp()">Add Listing</button> 
+        <button class="btn btn-danger mx-3"routerLink="/login">Logout</button> 
+    </div>
+</div>
+</nav>
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid-py-3">
+        <h1 class="display-5 fw-bold">Testy Codeiz Properties</h1>
+        <p class="col-mb-8 fs-4">You can Add Property data here  free</p>
+        <a class="btn btn-primary" href="https://wwww.youtube.com/@testycodeiz">testyCodeiz</a>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Property title</th>
+        <th scope="col">Property Price</th>
+        <th scope="col">Property Location</th>
+        <th scope="col">Property Details</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of allProperty">
+        <td>{{data.id}}</td>
+        <td>{{data.ptitle}}</td>
+        <td>{{data.pprice | currency}}</td>
+        <td>{{data.plocation}}</td>
+        <td>{{data.pdetails}}</td>
+        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"(click)="onEdit(data)">Edit</button>
+            <button class="btn btn-success mx-3"(click)="getAllProperty()">View</button>
+            <button class="btn btn-danger mx-3"(click)="deleteProp()">Delete</button>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Property Details Form</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="formValue">
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Property Title</label>
+                <input formControlName="ptitle" type="text" class="form-control" id="formGroupExampleInput" placeholder="Housing ltd">
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Property Price</label>
+                <input formControlName="pprice"type="text" class="form-control" id="formGroupExampleInput2" placeholder="945000">
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Property Location</label>
+                <input formControlName="plocation" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Hyderabad">
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Property Details</label>
+                <input formControlName="pdetails"type="text" class="form-control" id="formGroupExampleInput2" placeholder="2bhk flat available">
+              </div>
+        </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" id="clear" class="btn btn-secondary" data-bs-dismiss="modal">Clear</button>
+          <button type="button" *ngIf="showAdd" class="btn btn-primary" (click)="addProp()">Add Listing</button>
+          <button type="button" *ngIf="showEdit"class="btn btn-warning" (click)="updateProp()">Update details</button>
+        </div>
+      </div>
+    </div>
+  </div>

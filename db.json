@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "id": 1,
+      "ptitle":"Ashish Properties",
+      "pprice": "87655",
+      "plocation":"hyderabad",
+      "pdetails":"Plot available for 2 room set"
+    }
+  ],
+  "signup": [
+    {
+      "id": 1,
+      "name": "Ashish Mishra",
+      "email":"ashi@gmail.com",
+      "mobile":"7878986574",
+      "password":"ashi@12345"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
